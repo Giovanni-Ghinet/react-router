@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Prodotti() {
   const [prodotti, setProdotti] = useState([]);
@@ -30,18 +31,20 @@ function Prodotti() {
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {prodotti.map((prodotto) => (
           <div className="col" key={prodotto.id}>
-            <div className="card h-100 shadow-sm">
-              <img
-                src={prodotto.image}
-                className="card-img-top p-3"
-                alt={prodotto.title}
-                style={{ height: '200px', objectFit: 'contain' }}
-              />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{prodotto.title}</h5>
-                <p className="card-text text-success fw-bold mt-auto">€ {prodotto.price}</p>
+            <Link to={`/prodotti/${prodotto.id}`} className="text-decoration-none text-dark">
+              <div className="card h-100 shadow-sm">
+                <img
+                  src={prodotto.image}
+                  className="card-img-top p-3"
+                  alt={prodotto.title}
+                  style={{ height: '200px', objectFit: 'contain' }}
+                />
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title">{prodotto.title}</h5>
+                  <p className="card-text text-success fw-bold mt-auto">€ {prodotto.price}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
